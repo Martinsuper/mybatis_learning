@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EmpMapper">
     <select id="selectEmp" resultType="com.mybatis.Employee">
-    select * from first_table where gender = #{gender}
+    select id,
+    last_name as lastName,
+    email,
+    gender
+    from first_table where gender = #{gender}
   </select>
 </mapper>
