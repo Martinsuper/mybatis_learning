@@ -1,11 +1,14 @@
 package com.mybatis;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * @ClassName Employee
  * @Description
  * @Author martind
  * @Date 2018/8/8 16:52
  **/
+@Alias("Emp")
 public class Employee {
     private Integer id;
     private String lastName;

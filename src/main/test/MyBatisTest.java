@@ -1,4 +1,5 @@
 import com.mybatis.Employee;
+import com.mybatis.dao.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,15 +17,33 @@ import java.util.List;
  * @Date 2018/8/8 17:09
  **/
 public class MyBatisTest {
+//    @Test
+//    public void test() throws IOException {
+//        String resource = "mybatis-config.xml";
+//        InputStream inputStream = Resources.getResourceAsStream(resource);
+//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        SqlSession openSession = sqlSessionFactory.openSession();
+//        try{
+//            List<Employee> employees = openSession.selectList("EmpMapper.getEmpById",1);
+//            System.out.println(employees);
+//        }finally {
+//            openSession.close();
+//        }
+//
+//    }
+
     @Test
-    public void test() throws IOException {
+    public void test1() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession openSession = sqlSessionFactory.openSession();
+
         try{
-            List<Employee> employees = openSession.selectList("EmpMapper.selectEmp","1");
-            System.out.println(employees);
+            EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+
+            Employee employee = mapper.getEmpById(1);
+            System.out.println(employee);
         }finally {
             openSession.close();
         }
