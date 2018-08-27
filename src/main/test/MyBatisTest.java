@@ -47,5 +47,6 @@ public class MyBatisTest {
         }finally {
             openSession.close();
         }
+//        System.out.println("hello");
     }
 }
